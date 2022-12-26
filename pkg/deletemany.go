@@ -1,4 +1,4 @@
-package mongodb
+package pkg
 
 func (c *Connection) DeleteMany() {
 }
