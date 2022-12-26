@@ -10,18 +10,26 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Connection struct {
-	Conn string
+type MongoDB struct {
+	Conn       string
+	Panic      bool
+	SettingLog bool
 }
 
-func (c *Connection) Connect() (client *mongo.Client, ctx context.Context, fctx context.CancelFunc, err error) {
+func (m *MongoDB) Connect() (client *mongo.Client, ctx context.Context, fctx context.CancelFunc, err error) {
 	godotenv.Load()
-	c.Conn = os.Getenv("MONGO_CONNECTION")
+	m.Conn = os.Getenv("MONGO_CONNECTION")
 
-	clientOptions := options.Client().ApplyURI(c.Conn)
-	client, _ = mongo.NewClient(clientOptions)
+	clientOptions := options.Client().ApplyURI(m.Conn)
+	client, err = mongo.NewClient(clientOptions)
+	if err != nil {
+		m.PanicLog(err)
+	}
 
 	ctx, fctx = context.WithTimeout(context.Background(), 10*time.Second)
 	err = client.Connect(ctx)
+	if err != nil {
+		m.PanicLog(err)
+	}
 	return
 }

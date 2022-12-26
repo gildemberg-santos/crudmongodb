@@ -1,4 +1,5 @@
 package pkg
 
-func (c *Connection) DeleteMany() {
+func (m *MongoDB) DeleteMany() {
+	panic("No implementation for DeleteMany")
 }

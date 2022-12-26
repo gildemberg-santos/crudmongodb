@@ -1,4 +1,5 @@
 package pkg
 
-func (c *Connection) UpdateMany() {
+func (m *MongoDB) UpdateMany() {
+	panic("No implementation for UpdateMany")
 }

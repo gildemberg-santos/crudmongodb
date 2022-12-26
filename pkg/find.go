@@ -1,4 +1,5 @@
 package pkg
 
-func (c *Connection) Find() {
+func (m *MongoDB) Find() {
+	panic("No implementation for Find")
 }

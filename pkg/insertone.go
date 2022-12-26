@@ -1,19 +1,17 @@
 package pkg
 
-import (
-	"log"
-)
-
-func (c *Connection) InsertOne(insert interface{}, collection string, document string) {
-	client, ctx, _, errConnect := c.Connect()
+func (m *MongoDB) InsertOne(insert interface{}, collection string, document string) {
+	client, ctx, _, errConnect := m.Connect()
 	if errConnect != nil {
-		log.Println("Error Connection MongoDB: ", errConnect)
+		m.Log("Error Connection MongoDB: " + errConnect.Error())
 	}
 	defer client.Disconnect(ctx)
 
 	collectionMongo := client.Database(collection).Collection(document)
 	_, errInsert := collectionMongo.InsertOne(ctx, insert)
 	if errInsert != nil {
-		log.Println("Error Insert MongoDB: ", errInsert)
+		m.Log("Error Insert MongoDB: " + errInsert.Error())
 	}
+
+	m.Log("Insert MongoDB: Success")
 }

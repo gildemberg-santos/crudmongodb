@@ -1,4 +1,5 @@
 package pkg
 
-func (c *Connection) InsertMany() {
+func (m *MongoDB) InsertMany() {
+	panic("No implementation for InsertMany")
 }

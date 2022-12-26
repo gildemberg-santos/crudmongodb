@@ -1,4 +1,5 @@
 package pkg
 
-func (c *Connection) UpdateOne() {
+func (m *MongoDB) UpdateOne() {
+	panic("No implementation for UpdateOne")
 }
