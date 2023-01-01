@@ -9,8 +9,12 @@ func main() {
 
 	conn.Connect()
 	data := map[string]interface{}{
+		"test": "test_01",
+	}
+	filter := map[string]interface{}{
 		"test": "test",
 	}
-	conn.InsertOne(data, "test", "test")
-	conn.InsertMany([]interface{}{data}, "test", "test")
+	// conn.InsertOne(data, "test", "test")
+	// conn.InsertMany([]interface{}{data}, "test", "test")
+	conn.UpdateOne(data, filter, "test", "test")
 }
