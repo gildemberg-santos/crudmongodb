@@ -12,4 +12,5 @@ func main() {
 		"test": "test",
 	}
 	conn.InsertOne(data, "test", "test")
+	conn.InsertMany([]interface{}{data}, "test", "test")
 }
