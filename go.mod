@@ -3,9 +3,8 @@ module github.com/gildemberg-santos/crudmongodb
 go 1.19
 
 require (
-	github.com/gildemberg-santos/crudmondodb v0.0.0-20230101223203-29a29d702108
 	github.com/joho/godotenv v1.4.0
-	go.mongodb.org/mongo-driver v1.10.3
+	go.mongodb.org/mongo-driver v1.11.1
 )
 
 require (
