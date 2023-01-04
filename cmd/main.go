@@ -1,6 +1,10 @@
 package main
 
-import "github.com/gildemberg-santos/crudmondodb/pkg"
+import (
+	"fmt"
+
+	"github.com/gildemberg-santos/crudmongodb/pkg"
+)
 
 func main() {
 	conn := pkg.MongoDB{
@@ -8,13 +12,14 @@ func main() {
 	}
 
 	conn.Connect()
-	data := map[string]interface{}{
-		"test": "test_01",
-	}
+	// data := map[string]interface{}{
+	// 	"test": "test",
+	// }
 	filter := map[string]interface{}{
 		"test": "test",
 	}
 	// conn.InsertOne(data, "test", "test")
 	// conn.InsertMany([]interface{}{data}, "test", "test")
-	conn.UpdateOne(data, filter, "test", "test")
+	// conn.UpdateOne(data, filter, "test", "test")
+	fmt.Println(conn.FindOne(filter, "test", "test"))
 }
